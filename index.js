@@ -16,7 +16,7 @@ function handler(req, res) {
 
 io.sockets.on('connection', function(socket) {
 	socket.on('flights', function(data) {
-		console.log("got data")		
+		console.log(data)		
 	});
 
 	// var count = 0;
