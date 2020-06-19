@@ -55,6 +55,9 @@
         
         var socket = io('http://localhost:8088');
         socket.on('flights', updateMarkers);
+        socket.on('disconnected', reason => {
+            console.log(reason)
+        })
 
     </script>
 
