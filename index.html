@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
 
-  <title>The HTML5 Herald</title>
+  <title>Skaner pozycji samolotów</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
    crossorigin=""/>
@@ -23,7 +23,7 @@
     <script type="text/javascript">
 
         var flights = [];
-        var map = L.map('map').setView([51.505, -0.09], 13);
+        var map = L.map('map').setView([51.505, -0.09], 2);
             L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png', {
             attribution: '<a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia</a>',
             minZoom: 10,
@@ -42,10 +42,11 @@
                     var marker = L.marker(flight.coords)
                     marker.addTo(map)
                     flights.push({
-                        id: flight.flightId,
+                        flightId: flight.flightId,
                         coords: flight.coords,
                         marker: marker
                     })
+                    marker.bindPopup(`${flight.flightId}`)
                 }else {
                     var latLng = L.latLng(flight.coords[0], flight.coords[1])
                     item.marker.setLatLng(latLng)
