@@ -16,7 +16,8 @@ function handler(req, res) {
 
 io.sockets.on('connection', function(socket) {
 	socket.on('flights', function(data) {
-		console.log(data)		
+		console.log(data)	
+		socket.broadcast.emit('flights', data);		
 	});
 
 	// var count = 0;
